@@ -67,7 +67,7 @@ function tweetIt() {
 
 
 //STREAM FUNCTION
-followTweet
+followTweet();
 
 function followTweet() {
 
