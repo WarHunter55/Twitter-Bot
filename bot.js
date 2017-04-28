@@ -118,3 +118,45 @@ function tweetIt2(txt) {
 //function processing(){
 //console.log('finished image');
 //}
+
+
+
+var fs = require('fs');
+processing();
+function processing() {
+	console.log("uploading image");
+	var filename = 'picture/image1.jpg';
+	
+	var parameters = {
+		encoding: 'base64'
+	}
+	
+	var 64 = fs.readFileSync(filename, parameters);
+	
+	//upload before i can tweet it
+	T.post('media/upload', {media_data: b64}, uploaded);
+	
+	function uploaded(err, data, resopnse){
+		//This is where you will tweet your picture
+		//My picture has a unique ID
+		var id = data.media_id_string;
+		var tweet = {
+			
+			status: 'ioefnjdfjksdfnkerwuisdfhgweuisdfjhweruisdfbhweruisdjhbweqr87sduygfaopioryirqyhroiqwyeruihdfajskfhw',
+			media_ids: [id]
+		}
+		
+		T.post('statueses/update', tweet, tweeted);
+		function tweeted(err, data, response){
+			
+			if (err){
+				console.log("Something went wrong!!!");
+			}else{
+				console.log("It posted!");
+			}
+			
+		}
+		
+	}
+	
+}
