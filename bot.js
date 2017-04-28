@@ -6,10 +6,10 @@ var Twit = require('twit');
 
 //We need to authenticate our twitter
 var T = new Twit({
-    consumer_key: 'NDKxK8Rf6yERtq67IgVLSSph3',
-    consumer_secret: '9cGRgUsTLvnV276yTEyoJ7MNDpefp4vNBRWoKXx301g4AdFhRk',
-    access_token: '847899116386500608-qcly7YgxkfOdDzyJKcyOCVNshh1P31P',
-    access_token_secret: 'MJg6LNOwcoFj8xO15ttUNhSGycn4O7ooXxgvAMTZFvIVu',
+    consumer_key: 'gjVEVOdXcRqDPXyuF2FsqLUgZ',
+    consumer_secret: 'UltU8psXjuiv7fSWIAa9gIdmgvaRckbr8QqUWtqJ2hKDHlWZ9N',
+    access_token: '847904623536951296-ghUjiGeTR5aUOdAnOFGQdVoVD04SPXV',
+    access_token_secret: 'an8Q1MNYEu45NddSu75lXVkjthpg6w0fRTeJwDGM5raDw',
     timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
 })
 
