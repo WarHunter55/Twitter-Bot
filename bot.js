@@ -1,9 +1,3 @@
-
-
-
-
-
-
 //Tells our console that the bot is starting
 console.log("The Bot is starting!");
 
@@ -132,7 +126,7 @@ var fs = require('fs');
 processing();
 function processing() {
 	console.log("uploading image");
-	var filename = 'picture/image1.jpg';
+	var filename = 'pictures/image1.jpg';
 	
 	var parameters = {
 		encoding: 'base64'
@@ -167,8 +161,3 @@ function processing() {
 	}
 	
 }
-
-
-
-
-
