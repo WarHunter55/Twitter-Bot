@@ -1,15 +1,15 @@
 //Tells our console that the bot is starting
-console.log("The Bot is starting!");
+console.log("The Bot is starting now!");
 
 //Require the twit package
 var Twit = require('twit');
 
 //We need to authenticate our twitter
 var T = new Twit({
-    consumer_key: 'gjVEVOdXcRqDPXyuF2FsqLUgZ',
-    consumer_secret: 'UltU8psXjuiv7fSWIAa9gIdmgvaRckbr8QqUWtqJ2hKDHlWZ9N',
-    access_token: '847904623536951296-ghUjiGeTR5aUOdAnOFGQdVoVD04SPXV',
-    access_token_secret: 'an8Q1MNYEu45NddSu75lXVkjthpg6w0fRTeJwDGM5raDw',
+    consumer_key: 'NDKxK8Rf6yERtq67IgVLSSph3',
+    consumer_secret: '9cGRgUsTLvnV276yTEyoJ7MNDpefp4vNBRWoKXx301g4AdFhRk',
+    access_token: '847899116386500608-qcly7YgxkfOdDzyJKcyOCVNshh1P31P',
+    access_token_secret: 'MJg6LNOwcoFj8xO15ttUNhSGycn4O7ooXxgvAMTZFvIVu',
     timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
 })
 
@@ -47,7 +47,7 @@ var T = new Twit({
 
 
 //POST TWEET
-//tweetIt();
+tweetIt();
 
 //setInterval(tweetIt, 1000*45);
 
@@ -56,7 +56,7 @@ function tweetIt() {
     var r = Math.floor(Math.random() * 100);
 
     var tweet = {
-        status: 'Here is the current random number ' + r + '#providencehigh #phs #ecs #2017'
+        status: 'Here is the current random number ' + r + ' #providencehigh #phs #ecs #2017'
     }
 
     T.post('statuses/update', tweet, gotData);
@@ -84,7 +84,7 @@ function followTweet() {
     function followed(eventMsg) {
         var name = eventMsg.source.name;
         var screenName = eventMsg.source.screen_name;
-        tweetIt2('@' + screenName + ' I Am The HYPE!!!');
+        tweetIt2('@' + screenName + ' how do you do?');
         
         
         
@@ -114,8 +114,6 @@ function tweetIt2(txt) {
 
 }
 
-
-
 //var exec = require('child_process').exec;
 //var cmd = '"C:\Users\juan.lopez\Downloads\processing-3.3\processing-java.exe" --sketch="H:\P5ECS\Lesson 20\circlesketch" --run';
 //exec(cmd, processing);
@@ -124,40 +122,54 @@ function tweetIt2(txt) {
 
 var fs = require('fs');
 processing();
-function processing() {
-	console.log("uploading image");
-	var filename = 'pictures/image1.jpg';
-	
-	var parameters = {
-		encoding: 'base64'
-	}
-	
-	var 64 = fs.readFileSync(filename, parameters);
-	
-	//upload before i can tweet it
-	T.post('media/upload', {media_data: b64}, uploaded);
-	
-	function uploaded(err, data, resopnse){
-		//This is where you will tweet your picture
-		//My picture has a unique ID
-		var id = data.media_id_string;
-		var tweet = {
-			
-			status: 'ioefnjdfjksdfnkerwuisdfhgweuisdfjhweruisdfbhweruisdjhbweqr87sduygfaopioryirqyhroiqwyeruihdfajskfhw',
-			media_ids: [id]
-		}
-		
-		T.post('statueses/update', tweet, tweeted);
-		function tweeted(err, data, response){
-			
-			if (err){
-				console.log("Something went wrong!!!");
-			}else{
-				console.log("It posted!");
-			}
-			
-		}
-		
-	}
-	
+function processing(){
+    console.log("uploaded image");
+    var filename = 'pictures/image1.jpg';
+    
+    var parameters = {
+        encoding: 'base64'
+    }
+    
+    var b64 = fs.readFileSync(filename, parameters);
+    
+    //i have to upload before i can tweet it
+    T.post('media/upload', {media_data: b64}, uploaded);
+    
+    function uploaded(err, data, response){
+        //This is where I will tweet! 
+        //My picture has a unique ID
+        var id = data.media_id_string;
+        var tweet = {
+            
+            status: '#ECS2017 live from node.js',
+            media_ids: [id]
+        }
+        
+        
+        T.post('statuses/update', tweet, tweeted);
+        
+        function tweeted(err, data, response){
+            
+            if (err){
+                console.log("Something went wrong!");
+            }else{
+                console.log("It posted!");
+            }
+            
+            
+        }
+        
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
