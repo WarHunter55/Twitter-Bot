@@ -84,7 +84,7 @@ function followTweet() {
     function followed(eventMsg) {
         var name = eventMsg.source.name;
         var screenName = eventMsg.source.screen_name;
-        tweetIt2('@' + screenName + ' Ayyyy thanks for the follow, im gonna try to make this account pretty awesome for you to enjoy so stay tuned for more and remember, I AM THE HYPE!!!');
+        tweetIt2('@' + screenName + ' Ayyyy thanks for the follow, im gonna try to make this account pretty awesome for you to enjoy so stay tuned for more and remember, I AM THE HYPE!!! (this is a bot im working on rn)');
         
         
         
