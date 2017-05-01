@@ -47,7 +47,7 @@ var T = new Twit({
 
 
 //POST TWEET
-tweetIt();
+//tweetIt();
 
 //setInterval(tweetIt, 1000*45);
 
@@ -123,9 +123,9 @@ function tweetIt2(txt) {
 var fs = require('fs');
 processing();
 function processing(){
-	var q = image()
+	var q = 2;
     console.log("uploaded image");
-    var filename = 'pictures/';
+    var filename = 'pictures/image' + q;
     
     var parameters = {
         encoding: 'base64'
