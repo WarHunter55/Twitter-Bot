@@ -84,7 +84,7 @@ function followTweet() {
     function followed(eventMsg) {
         var name = eventMsg.source.name;
         var screenName = eventMsg.source.screen_name;
-        tweetIt2('@' + screenName + ' how do you do?');
+        tweetIt2('@' + screenName + ' Ayyyy thanks for the follow, im gonna try to make this account pretty awesome for you to enjoy so stay tuned for more and remember, I AM THE HYPE!!!');
         
         
         
@@ -123,8 +123,9 @@ function tweetIt2(txt) {
 var fs = require('fs');
 processing();
 function processing(){
+	var q = image()
     console.log("uploaded image");
-    var filename = 'pictures/image1.jpg';
+    var filename = 'pictures/';
     
     var parameters = {
         encoding: 'base64'
@@ -167,6 +168,7 @@ function processing(){
 
 
 
+//Instead of writing each thing out, you need to create an array that the bot cycles through in order to post
 
 
 
