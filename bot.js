@@ -13,6 +13,8 @@ var T = new Twit({
     timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
 })
 
+var p = 0;
+
 //GET -> search by hashtag, location, user, etc
 //POST -> Post tweets
 //STREAM -> follows, you can @ them, mentions, you can @ them
@@ -121,9 +123,10 @@ function tweetIt2(txt) {
 
 
 var fs = require('fs');
-processing();
+//processing();
+setInterval(processing, 20000);
 function processing(){
-	var p = 2;
+	picUpdate();
     console.log("uploaded image");
     var filename = 'pictures/image' + p + '.jpg';
     
@@ -172,6 +175,10 @@ function processing(){
 
 
 
-
+function picUpdate(){
+	
+	p ++;
+	
+}
 
 
