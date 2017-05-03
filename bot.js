@@ -125,7 +125,7 @@ processing();
 function processing(){
 	var q = 2;
     console.log("uploaded image");
-    var filename = 'pictures/image' + q++;
+    var filename = 'pictures/image' +q, i++;
     
     var parameters = {
         encoding: 'base64'
