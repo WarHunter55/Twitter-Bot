@@ -123,9 +123,9 @@ function tweetIt2(txt) {
 var fs = require('fs');
 processing();
 function processing(){
-	var q = 2;
+	var p = 2;
     console.log("uploaded image");
-    var filename = 'pictures/image' +q, i++;
+    var filename = 'pictures/image' + 'p';
     
     var parameters = {
         encoding: 'base64'
