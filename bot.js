@@ -145,7 +145,7 @@ function processing(){
         var id = data.media_id_string;
         var tweet = {
             
-            status: '#ECS2017 live from node.js',
+            status: 'Follow me for more pics like these, thank you to my followers!!! #anime #dragonball #dragonballsuper #dbz #dbzsuper #Gohan #trunks #mai #goten #goku #vegeta #Vegito #Gogeta #bulma #chichi #gohan #manga',
             media_ids: [id]
         }
         
