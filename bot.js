@@ -124,7 +124,7 @@ function tweetIt2(txt) {
 
 var fs = require('fs');
 //processing();
-setInterval(processing, 600000);
+setInterval(processing, 10000);
 function processing(){
 	picUpdate();
     console.log("uploaded image");
