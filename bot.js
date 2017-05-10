@@ -6,11 +6,11 @@ var Twit = require('twit');
 
 //We need to authenticate our twitter
 var T = new Twit({
-    consumer_key: 'gjVEVOdXcRqDPXyuF2FsqLUgZ',
-    consumer_secret: 'UltU8psXjuiv7fSWIAa9gIdmgvaRckbr8QqUWtqJ2hKDHlWZ9N',
-    access_token: '847904623536951296-ghUjiGeTR5aUOdAnOFGQdVoVD04SPXV',
-    access_token_secret: 'an8Q1MNYEu45NddSu75lXVkjthpg6w0fRTeJwDGM5raDw',
-    timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
+	consumer_key: 'gjVEVOdXcRqDPXyuF2FsqLUgZ',
+	consumer_secret: 'UltU8psXjuiv7fSWIAa9gIdmgvaRckbr8QqUWtqJ2hKDHlWZ9N',
+	access_token: '847904623536951296-ghUjiGeTR5aUOdAnOFGQdVoVD04SPXV',
+	access_token_secret: 'an8Q1MNYEu45NddSu75lXVkjthpg6w0fRTeJwDGM5raDw',
+	timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
 })
 
 var p = 0;
@@ -54,23 +54,23 @@ var p = 0;
 //setInterval(tweetIt, 1000*45);
 
 function tweetIt() {
-    //Find a random real number from 0 to 1 and multiply by 100, and then round down
-    var r = Math.floor(Math.random() * 100);
+	//Find a random real number from 0 to 1 and multiply by 100, and then round down
+	var r = Math.floor(Math.random() * 100);
 
-    var tweet = {
-        status: 'Here is the current random number ' + r + ' #providencehigh #phs #ecs #2017'
-    }
+	var tweet = {
+		status: 'Here is the current random number ' + r + ' #providencehigh #phs #ecs #2017'
+	}
 
-    T.post('statuses/update', tweet, gotData);
+	T.post('statuses/update', tweet, gotData);
 
-    function gotData(err, data, response) {
-        if (err) {
-            console.log("Something went wrong!");
+	function gotData(err, data, response) {
+		if (err) {
+			console.log("Something went wrong!");
 
-        } else {
-            console.log("It posted!");
-        }
-    }
+		} else {
+			console.log("It posted!");
+		}
+	}
 }
 
 //STREAM FUNCTION 
@@ -79,40 +79,40 @@ followTweet();
 
 function followTweet() {
 
-    var stream = T.stream('user');
-    //Anything someone follows me
-    stream.on('follow', followed);
+	var stream = T.stream('user');
+	//Anything someone follows me
+	stream.on('follow', followed);
 
-    function followed(eventMsg) {
-        var name = eventMsg.source.name;
-        var screenName = eventMsg.source.screen_name;
-        tweetIt2('@' + screenName + ' Ayyyy thanks for the follow, im gonna try to make this account pretty awesome for you to enjoy so stay tuned for more and remember, I AM THE HYPE!!! (this is a bot im working on rn)');
-        
-        
-        
-        var fs = require('fs');
-        console.log('finished tweet json');
-    var json = JSON.stringify(eventMsg, null, 2);
-    fs.writeFile("tweet.json", json);
-    }
+	function followed(eventMsg) {
+		var name = eventMsg.source.name;
+		var screenName = eventMsg.source.screen_name;
+		tweetIt2('@' + screenName + ' Ayyyy thanks for the follow, im gonna try to make this account pretty awesome for you to enjoy so stay tuned for more and remember, I AM THE HYPE!!! (this is a bot im working on rn)');
+
+
+
+		var fs = require('fs');
+		console.log('finished tweet json');
+		var json = JSON.stringify(eventMsg, null, 2);
+		fs.writeFile("tweet.json", json);
+	}
 }
 
 function tweetIt2(txt) {
-    var tweet = {
-        status: txt
+	var tweet = {
+		status: txt
 
-    }
+	}
 
-    T.post('statuses/update', tweet, tweeted);
+	T.post('statuses/update', tweet, tweeted);
 
-    function tweeted(err, data, response) {
-        if (err) {
-            console.log("Something went wrong!");
-        } else {
-            console.log("You were followed");
-        }
+	function tweeted(err, data, response) {
+		if (err) {
+			console.log("Something went wrong!");
+		} else {
+			console.log("You were followed");
+		}
 
-    }
+	}
 
 }
 
@@ -124,46 +124,48 @@ function tweetIt2(txt) {
 
 var fs = require('fs');
 //processing();
-setInterval(processing, 10000);
-function processing(){
-	var picUpdate();
-    console.log("uploaded image");
-    var filename = 'pictures/image' + p + '.jpg';
-    
-    var parameters = {
-        encoding: 'base64'
-    }
-    
-    var b64 = fs.readFileSync(filename, parameters);
-    
-    //i have to upload before i can tweet it
-    T.post('media/upload', {media_data: b64}, uploaded);
-    
-    function uploaded(err, data, response){
-        //This is where I will tweet! 
-        //My picture has a unique ID
-        var id = data.media_id_string;
-        var tweet = {
-            
-            status: 'Follow me for more pics like these, thank you to my followers!!! #anime #dragonball #dragonballsuper #dbz #dbzsuper #Gohan #trunks #mai #goten #goku #vegeta #Vegito #Gogeta #bulma #chichi #gohan #manga',
-            media_ids: [id]
-        }
-        
-        
-        T.post('statuses/update', tweet, tweeted);
-        
-        function tweeted(err, data, response){
-            
-            if (err){
-                console.log("Something went wrong!");
-            }else{
-                console.log("It posted!");
-            }
-            
-            
-        }
-        
-    }
+setInterval(processing, 3600000);
+
+function processing() {
+	picUpdate();
+	console.log("uploaded image");
+	var filename = 'pictures/image' + p + '.jpg';
+
+	var parameters = {
+		encoding: 'base64'
+	}
+
+	var b64 = fs.readFileSync(filename, parameters);
+
+	//i have to upload before i can tweet it
+	T.post('media/upload', {
+		media_data: b64
+	}, uploaded);
+
+	function uploaded(err, data, response) {
+		//This is where I will tweet! 
+		//My picture has a unique ID
+		var id = data.media_id_string;
+		var tweet = {
+
+			media_ids: [id]
+		}
+
+
+		T.post('statuses/update', tweet, tweeted);
+
+		function tweeted(err, data, response) {
+
+			if (err) {
+				console.log("Something went wrong!");
+			} else {
+				console.log("It posted!");
+			}
+
+
+		}
+
+	}
 
 }
 
@@ -175,10 +177,8 @@ function processing(){
 
 
 
-function picUpdate(){
-	
-	p ++;
-	
+function picUpdate() {
+
+	p++;
+
 }
-
-
