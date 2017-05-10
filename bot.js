@@ -126,7 +126,7 @@ var fs = require('fs');
 //processing();
 setInterval(processing, 10000);
 function processing(){
-	var = picUpdate();
+	var picUpdate();
     console.log("uploaded image");
     var filename = 'pictures/image' + p + '.jpg';
     
